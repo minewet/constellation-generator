@@ -63,7 +63,7 @@ def connect_knn(image, stars, k=2):
     return extracted_images
 
 
-def get_overlay_image(image, line, opacity = 0.2):
+def overlay_image(image, line, opacity = 0.2):
     result = image.copy()
     line = ((255-line) * opacity).astype(np.uint8)
     result += cv2.cvtColor(line, cv2.COLOR_GRAY2BGR) 

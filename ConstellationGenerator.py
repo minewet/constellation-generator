@@ -27,7 +27,11 @@ class App:
         self.canvas.bind("<Button-1>", self.on_canvas_click)
 
         # 연결된 별들의 리스트
-        self.activated_star = []
+        self.activated_star = None
+
+        submit_button = tk.Button(root, text="Submit", command=self.submit_canvas)
+        submit_button.pack(side=tk.RIGHT, padx=10, pady=10)
+
 
     def load_background_image(self, image_path):
         # 이미지 로드 및 적절한 크기 조절
@@ -45,7 +49,6 @@ class App:
             if self.activated_star:
                 self.canvas.create_line(self.activated_star[0], self.activated_star[1], clicked_star[0], clicked_star[1], fill="#aaaaaa", width=2)
                 self.drawn_image = draw_line(self.drawn_image, self.activated_star, clicked_star)
-                save_image(self.drawn_image, "output/drawing.png")
             self.activated_star = clicked_star
         else:
             self.activated_star = None
@@ -60,6 +63,11 @@ class App:
                 min_dist = dist
                 closest_star = star
         return closest_star if min_dist < 15 else None
+    
+    def submit_canvas(self):
+        save_image(self.drawn_image, "output/drawing.png")
+        save_image(overlay_image(self.starImg.image, self.drawn_image), "output/overlay_drawing.png")
+
 
 # 애플리케이션 실행
 root = tk.Tk()
