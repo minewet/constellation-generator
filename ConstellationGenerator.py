@@ -1,6 +1,9 @@
 import tkinter as tk
 from PIL import Image, ImageTk
-from image_process import StarImage
+from image_process import *
+
+import cv2
+import numpy as np
 
 
 class App:
@@ -17,6 +20,7 @@ class App:
         self.canvas.pack()
 
         self.load_background_image("input/binary_"+self.filename)  
+        self.drawn_image = new_canvas(self.starImg.size)
 
 
         # 클릭 이벤트 연결
@@ -40,6 +44,8 @@ class App:
         if clicked_star:
             if self.activated_star:
                 self.canvas.create_line(self.activated_star[0], self.activated_star[1], clicked_star[0], clicked_star[1], fill="#aaaaaa", width=2)
+                self.drawn_image = draw_line(self.drawn_image, self.activated_star, clicked_star)
+                save_image(self.drawn_image, "output/drawing.png")
             self.activated_star = clicked_star
         else:
             self.activated_star = None

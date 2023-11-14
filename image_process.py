@@ -72,3 +72,12 @@ def get_overlay_image(image, line, opacity = 0.2):
 
 def save_image(image, name):
     cv2.imwrite(name, image)        
+
+
+def new_canvas(size):
+    canvas = np.ones(size, np.uint8) * 255
+    return canvas
+
+def draw_line(canvas, p1, p2, thickness=2):
+    cv2.line(canvas, p1,p2, 0, thickness=thickness)
+    return canvas
