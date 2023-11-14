@@ -30,7 +30,7 @@ class StarImage:
         for contour in contours:
             (x, y), radius = cv2.minEnclosingCircle(contour) # 윤곽선을 둘러싸는 최소한의 원 (x,y, radius)
             if radius < min_size: 
-                cv2.drawContours(self.binary, contour, -1, (100, 100, 100), thickness=cv2.FILLED)
+                cv2.drawContours(self.binary, contour, -1, (120, 120, 120), thickness=cv2.FILLED)
                 continue
             center = (round(y), round(x))
             stars.append(center)

@@ -23,7 +23,7 @@ class App:
         self.canvas.bind("<Button-1>", self.on_canvas_click)
 
         # 연결된 별들의 리스트
-        self.connected_stars = []
+        self.activated_star = []
 
     def load_background_image(self, image_path):
         # 이미지 로드 및 적절한 크기 조절
@@ -38,10 +38,11 @@ class App:
         """ 캔버스 클릭 시 이벤트 처리 """
         clicked_star = self.find_closest_star(event.x, event.y)
         if clicked_star:
-            if self.connected_stars:
-                last_star = self.connected_stars[-1]
-                self.canvas.create_line(last_star[0], last_star[1], clicked_star[0], clicked_star[1], fill="#CCCCCC", width=2)
-            self.connected_stars.append(clicked_star)
+            if self.activated_star:
+                self.canvas.create_line(self.activated_star[0], self.activated_star[1], clicked_star[0], clicked_star[1], fill="#aaaaaa", width=2)
+            self.activated_star = clicked_star
+        else:
+            self.activated_star = None
 
     def find_closest_star(self, x, y):
         """ 클릭된 위치와 가장 가까운 별을 찾습니다. """
