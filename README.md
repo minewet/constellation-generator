@@ -2,16 +2,17 @@
 Introduction to Culture Technology Team project
 
 ### Setup
-Insert authorization key for chatgpt, replicate in ChatGPT_API.py
-
-### How to use
 ```
 git clone https://github.com/minewet/constellation-generator.git
 cd constellation-generator
-
 pip install -r requirements.txt
-python constellation_generator.py
+```
+Then you need to insert authorization key for chatgpt, replicate in ChatGPT_API.py
 
+
+### How to use
+```
+python constellation_generator.py
 ```
 
 ### Process
