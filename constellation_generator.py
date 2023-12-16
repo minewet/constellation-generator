@@ -47,7 +47,6 @@ class App:
 
 
     def load_background_image(self, image_path):
-        # 이미지 로드 및 적절한 크기 조절
         self.image = Image.open(image_path)
         self.image = self.image.resize(self.size, Image.Resampling.LANCZOS)
         self.tk_image = ImageTk.PhotoImage(self.image)
@@ -67,7 +66,6 @@ class App:
             self.activated_star = None
 
     def find_closest_star(self, x, y):
-        """ 클릭된 위치와 가장 가까운 별을 찾습니다. """
         closest_star = None
         min_dist = 20
         for star in self.stars:
@@ -127,8 +125,7 @@ print("\n*･--- 𝐂𝐨𝐧𝐬𝐭𝐞𝐥𝐥𝐚𝐭𝐢𝐨𝐧 𝐆𝐞�
 webcam = cv2.VideoCapture(0)
 
 if not webcam.isOpened():
-    print("Could not find camera.")
-    exit()
+    print("Could not find camera. Just use Default Image.")
 
 while webcam.isOpened():
     status, frame = webcam.read()
