@@ -25,10 +25,8 @@ class App:
         self.output_line = None
         self.output_overlay = None
 
-        # 클릭 이벤트 연결
         self.canvas.bind("<Button-1>", self.on_canvas_click)
 
-        # 연결된 별들의 리스트
         self.activated_star = None
 
         reset_button = tk.Button(root, text="Reset", command=self.reset_canvas)
@@ -51,11 +49,9 @@ class App:
         self.image = self.image.resize(self.size, Image.Resampling.LANCZOS)
         self.tk_image = ImageTk.PhotoImage(self.image)
         
-        # 캔버스에 이미지 배치
         self.canvas.create_image(0, 0, anchor='nw', image=self.tk_image)
 
     def on_canvas_click(self, event):
-        """ 캔버스 클릭 시 이벤트 처리 """
         clicked_star = self.find_closest_star(event.x, event.y)
         if clicked_star:
             if self.activated_star:
@@ -126,7 +122,9 @@ webcam = cv2.VideoCapture(0)
 
 if not webcam.isOpened():
     print("Could not find camera. Just use Default Image.")
-
+else:
+    print("Press SPACE to capture. Or, press Q to use default Image.")
+    
 while webcam.isOpened():
     status, frame = webcam.read()
 
