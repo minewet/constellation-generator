@@ -17,7 +17,7 @@ class StarImage:
         save_image(self.binary, "input/binary_"+self.file_path)
 
 
-    def get_binary(self, threshold_value=50, max_value=255): 
+    def get_binary(self, threshold_value=100, max_value=255): 
         grayscale_image = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         _, thresholded = cv2.threshold(grayscale_image, threshold_value, max_value, cv2.THRESH_BINARY)
         
@@ -59,16 +59,20 @@ def connect_knn(image, stars, k=2):
         component = np.ones_like(canvas) * 255
         component[labels == label] = 0
         extracted_images.append(component)
-        save_image(component, f"output/component_{label}.png")    
+        save_image(component, f"output/line_{label}.png")    
     return extracted_images
 
 
-def overlay_image(image, line, opacity = 0.2):
+def overlay_image(image, line, opacity = 0.3):
     result = image.copy()
-    line = ((255-line) * opacity).astype(np.uint8)
-    result += cv2.cvtColor(line, cv2.COLOR_GRAY2BGR) 
-    return result
+    line = ((255-line) * opacity).astype(np.uint8)  
+    return cv2.add(result, cv2.cvtColor(line, cv2.COLOR_GRAY2BGR)) 
 
+def overlay_image_rgb(image, line, opacity = 0.9):
+    result = image.copy()
+    line = cv2.cvtColor(line, cv2.COLOR_BGR2GRAY)
+    line = ((255-line) * opacity).astype(np.uint8)  
+    return cv2.add(result, cv2.cvtColor(line, cv2.COLOR_GRAY2BGR)) 
 
 def save_image(image, name):
     cv2.imwrite(name, image)        

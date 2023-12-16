@@ -1,0 +1,9 @@
+opencv-python
+numpy
+tk
+scikit-learn
+
+requests
+replicate
+pillow
+openai

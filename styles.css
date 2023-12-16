@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Prata&display=swap');
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+
+    font-family: 'Prata', serif;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#book {
+    width: 1920px;
+    max-width: 90%;
+    height: 1080px;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: url('paper-texture2.jpg'); /* Paper-like texture background */
+    background-size: cover;
+}
+#left-page, #right-page {
+    width: 50%;
+    padding: 80px;
+    overflow-y: auto;
+    position: relative;
+    background: rgba(255, 255, 255, 0.5); /* Slight transparency to show the texture */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+}
+
+#left-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+}
+
+#back-button, #continue-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: fixed;
+    bottom: 20px;
+}
+
+#back-button {
+    left: 20px;
+}
+
+#back-button:hover, #continue-button:hover {
+    background-color: #0056b3;
+}
+
+#continue-button {
+    right: 20px;
+
+}
+#continue-button:hover {
+    background-color: #0056b3;
+}
+
+#book::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 75%;
+    background: linear-gradient(to bottom, transparent, #cfc8c8, transparent);
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#book-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#book-title {
+    font-size: 2em;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+#book-text {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+@media (max-width: 1920px) {
+    #book {
+        width: 100%;
+        height: auto;
+    }
+    #left-page, #right-page {
+        padding: 40px; /* Adjust padding for smaller screens */
+    }
+}
