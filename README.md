@@ -1,5 +1,6 @@
 # constellation-generator
 Introduction to Culture Technology Team project
+![image](https://github.com/minewet/constellation-generator/assets/71055964/d9408081-559a-4b28-8ae6-4b28a1a436db)
 
 ### Setup
 ```
